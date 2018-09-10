@@ -32,6 +32,20 @@ function Queue() {
         // using it i can get the length inside the array pushed and the length of persons in the queue.
         let size = items.flat().length;
         return 'length: ' + size;
+
+        //other good solution with methods (filter,reduce) already supported by browsers it is:
+            // var sizeInsideArray=0;
+            // var length=0;
+            // var total=0;
+    
+            // sizeInsideArray= items.filter(item=> item instanceof Array? true: false)
+            // .reduce((acc,array)=> acc+array.length,0);
+    
+            // length = items.filter(item => item instanceof Array? false:true).
+            // reduce((acc)=>acc+=1,0);
+            // total = length + sizeInsideArray;
+            // return 'length: ' + total;
+        }
     }
 
     this.print = function () {
