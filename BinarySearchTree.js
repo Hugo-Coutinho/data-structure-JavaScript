@@ -62,6 +62,47 @@ function BinarySearchTree() {
         }
     }
 
+    // they visit a node after visit the descendants
+    this.postOrderTraverse = function (callback) {
+        postOrderTraverseNode(root, callback);
+    };
+
+    var postOrderTraverseNode = function (node, callback) {
+        if (node != null) {
+            postOrderTraverseNode(node.left, callback);
+            postOrderTraverseNode(node.rigth, callback);
+            callback(node.key);
+        }
+    };
+
+    this.min = function () {
+        return minNode(root);
+    };
+
+    var minNode = function (node) {
+        if (node) {
+            while (node && node.left != null) {
+                node = node.left;
+            }
+            return node.key;
+        }
+        return null;
+    };
+
+    this.max = function () {
+        return maxNode(root);
+    };
+
+    var maxNode = function (node) {
+        if (node) {
+            while (node && node.rigth != null) {
+                node = node.rigth;
+            }
+            return node.key;
+        }
+        return null;
+    };
+
 }
 function printNode(value) {
     console.log(value);
@@ -78,3 +119,9 @@ tree.inOrderTraverse(printNode);
 
 console.log('in pre order traverse');
 tree.preOrderTraverse(printNode);
+
+console.log('in post order traverse');
+tree.postOrderTraverse(printNode);
+
+console.log('min- '+ tree.min());
+console.log('max- '+ tree.max());
