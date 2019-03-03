@@ -3,18 +3,18 @@
 
 function Set() {
 
-    //we could use array too, but with object in JS we cannot set two different property, so this resolve the duplicate problem.
+    //we could use array too, but with an object in JS we cannot set two different properties, so this resolves the duplicate problem.
     let items = {};
 
     this.has = function (value) {
-        // hasOwnProperty method return true if has value we passed through the param.
+        // hasOwnProperty method returns true if has value we passed through the param.
         return items.hasOwnProperty(value);
     };
 
     this.add = function (value) {
         //if the value is not in items so we add to it.
         if (!this.has(value)) {
-            //we are adding value like key and value, because adding it like key can help us to find it (hasOwnProperty).
+            //we are adding value like the key and value, because adding it like key can help us to find it (hasOwnProperty).
             items[value] = value;
             return true;
         }
@@ -30,11 +30,11 @@ function Set() {
     };
 
     this.size = function () {
-        //keys() method bring to us all the properties of specified array, and then we can use the property length to see the size of this items.
+        //keys () method brings to us all the properties of the specified array, and then we can use the property length to see the size of this item.
         return Object.keys(items).length;
     };
 
-    //method for extract all the items values in array form.
+    //method for extracting all the item values in array form
     this.values = function () {
         let values = [];
         for (let i = 0, keys = Object.keys(items); i < keys.length; i++) {
@@ -43,7 +43,7 @@ function Set() {
         return values;
     };
 
-    //union - two sets data, return a new set with all the all sets elements.
+    //union - two set data, return a new set with all the all set's elements.
     this.union = function (otherSet) {
         let unionSet = new Set();
 
@@ -74,7 +74,7 @@ function Set() {
         return intersectionSet;
     };
 
-    //two sets data, return a new set with all different element between then.
+    //two set data, return a new set with all different element between then.
     this.difference = function (otherSet) {
         let differenceSet = new Set();
 
@@ -88,15 +88,16 @@ function Set() {
         return differenceSet;
     };
 
-    // subset - current set has all your values inside the other set who you will compare to.
+    // subset - current set has all your values in the other set who you will compare too.
     this.subset = function (otherSet) {
         if (this.size() > otherSet.size()) {
             return false;
         } else {
 
             let values = this.values();
-            // compare the current values with values the other set,
-            //  if not there any value in other set, so in this way, it means the current set is not a sub set of the other set.
+            //compare the current values with the values the other set,
+            // if not there any value in another set, so in this way, 
+            //it means the current set is not a subset of the other set.
             for (let i = 0; i < values.length; i++) {
                 if (!otherSet.has(values[i])) {
                     return false;

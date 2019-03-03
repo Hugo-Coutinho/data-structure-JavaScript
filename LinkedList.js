@@ -72,12 +72,14 @@ function LinkedList() {
         let index = 0;
         let previous;
 
+        // check is not a crazy position
         if (position > -1 && position <= length) {
-
+            // the list being empty the element will be append at position 0
             if (position == 0) {
                 node.next = current;
                 head = node;
             } else {
+                // rolling until the wished position is found and append the element into it.
                 while (index++ < position) {
                     previous = current;
                     current = current.next;
