@@ -23,11 +23,14 @@ function HashTable() {
     };
 
     this.put = function (key, value) {
+        // get hash code position by key parameter.
         var position = loseloseHashCode(key);
 
+        // check if the current position on the table already has the value.
         if (table[position] == undefined) {
             table[position] = new valuePair(key, value);
         } else {
+            // iteration until finds the next position of the table to put a new value pair.
             var index = ++position;
             while (table[index] != undefined) {
                 index++;
@@ -73,8 +76,8 @@ hash.put('Flamengo', 'Paqueta');
 hash.put('Barcelona', 'Arthur');
 hash.put('Real Madrid', 'Vini JR');
 
-console.log(hash.get('Flamengo'));
+console.log("value: "+ hash.get('Flamengo'));
 
 hash.remove('Flamengo');
-console.log(hash.get('Flamengo'));
+console.log("value: "+ hash.get('Flamengo'));
 hash.print();
